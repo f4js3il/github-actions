@@ -17,6 +17,7 @@ jobs:
         shell: python
   run-windows-command:
     runs-on: windows-latest
+    needs: ["run-shell-command"]     #  not needed parallel and this step depends on first one
     steps:
       - name: Directory powershell
         run: Get-Location
