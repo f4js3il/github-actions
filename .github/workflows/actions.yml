@@ -1,12 +1,23 @@
 name: Actions WorkFlow
 on: 
-  # push:
+  push:
+    branches:
+      - master
+      - 'feature/*' #mathches feature/blah, feature/blahh but  not feature/blah/blah
+      - 'feature/**' #matches feature/blah/blah
+      - '!feature/feah' #to exclude matching feah branch
+    # tags:
+    #   - ""
+    # paths:
+    #   - '**.js' this means when push contains .js files this workflow will run
+    # branches-ignore:
+    #   - develope  branches and branches all wont work together, 
   # schedule:
   #   - cron: "0/5 * * * *"
-  repository_dispatch:
-    types: [build]
-  pull_request:
-    types: [closed, assigned, opened, reopened]
+  # repository_dispatch:
+  #   types: [build]
+  # pull_request:
+  #   types: [closed, assigned, opened, reopened]
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
